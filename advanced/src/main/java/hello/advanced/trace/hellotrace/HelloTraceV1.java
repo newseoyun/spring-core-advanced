@@ -16,7 +16,7 @@ public class HelloTraceV1 {
     public TraceStatus begin(String message) {
         TraceId traceId = new TraceId();
         Long startTimeMs = System.currentTimeMillis();
-        // 로그 출력
+        log.info("[{}] {}{}", traceId.getId(), addSpace(START_PREFIX, traceId.getLevel()), message);
         return new TraceStatus(traceId, startTimeMs, message);
     }
 
@@ -25,7 +25,7 @@ public class HelloTraceV1 {
     }
 
     public void exception(TraceStatus status, Exception e) {
-        complete(status, null);
+        complete(status, e);
     }
 
     private void complete(TraceStatus status, Exception e) {
@@ -46,6 +46,5 @@ public class HelloTraceV1 {
         }
         return sb.toString();
     }
-
 
 }
