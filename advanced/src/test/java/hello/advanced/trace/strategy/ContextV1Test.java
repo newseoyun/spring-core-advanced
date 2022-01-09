@@ -80,6 +80,7 @@ public class ContextV1Test {
         contextV2.execute();
     }
 
+    // 매개변수에 바로 익명 내부 클래스 사용
     @Test
     void strategyV3() {
         ContextV1 contextV1 = new ContextV1(new Strategy() {
@@ -99,6 +100,7 @@ public class ContextV1Test {
         contextV2.execute();
     }
 
+    // 람다
     @Test
     void strategyV4() {
         ContextV1 contextV1 = new ContextV1(() -> log.info(" 비즈니스 로직 1 실행"));
