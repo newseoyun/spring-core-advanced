@@ -15,11 +15,9 @@ public abstract class AbstractTemplate<T> {
         TraceStatus status = null;
         try {
             status = trace.begin(message);
-            
             // 로직 호출
             T result = call();
             // orderService.orderItem(itemId);
-
             trace.end(status);
             return result;
         } catch(Exception e) {
